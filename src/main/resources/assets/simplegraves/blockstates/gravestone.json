@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "simplegraves:block/gravestone",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "simplegraves:block/gravestone",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "simplegraves:block/gravestone"
+    },
+    "facing=west": {
+      "model": "simplegraves:block/gravestone",
+      "y": 90
+    }
+  }
+}
