@@ -3,7 +3,6 @@ package speechrezz.simplegraves.mixin;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -51,6 +50,7 @@ public abstract class LivingEntityMixin extends LivingEntity {
 		}
 	}
 
+	@Unique
 	private static boolean placeGravestone(World world, PlayerInventory inventory) {
 		Optional<BlockPos> gravePosOptional = findGravestonePlacementPosition(world, inventory.player.getBlockPos());
 		if (gravePosOptional.isEmpty()) return false;
@@ -80,6 +80,7 @@ public abstract class LivingEntityMixin extends LivingEntity {
 		return true;
 	}
 
+	@Unique
 	private static boolean canPlaceGravestone(World world, BlockPos blockPos) {
 		if(world.getBlockEntity(blockPos) != null) return false;
 		Block block = world.getBlockState(blockPos).getBlock();
@@ -90,6 +91,7 @@ public abstract class LivingEntityMixin extends LivingEntity {
 		return isWithinWorldBounds && isAir;
 	}
 
+	@Unique
 	private static Optional<BlockPos> findGravestonePlacementPosition(World world, BlockPos startPos) {
 		startPos = startPos.withY(Math.max(world.getDimension().minY() + 1, startPos.getY())); // Clamp Y
 
@@ -100,6 +102,7 @@ public abstract class LivingEntityMixin extends LivingEntity {
 		return Optional.empty();
 	}
 
+	@Unique
 	private static void tryPlaceDirt(World world, BlockPos dirtPos) {
 		Block block = world.getBlockState(dirtPos).getBlock();
 		if (block == Blocks.AIR || block == Blocks.GRASS_BLOCK)
