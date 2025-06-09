@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.collection.DefaultedList;
@@ -56,7 +57,9 @@ public abstract class LivingEntityMixin extends LivingEntity {
 		BlockPos gravePos = gravePosOptional.get();
 
 		// Place gravestone
-		BlockState graveState = ModBlocks.GRAVESTONE.getDefaultState().with(Properties.HORIZONTAL_FACING, inventory.player.getHorizontalFacing().getOpposite());
+		BlockState graveState = ModBlocks.GRAVESTONE.getDefaultState()
+				.with(Properties.HORIZONTAL_FACING, inventory.player.getHorizontalFacing().getOpposite())
+				.with(Properties.WATERLOGGED, world.getFluidState(gravePos).isOf(Fluids.WATER));
 		if (!world.setBlockState(gravePos, graveState)) return false;
 		tryPlaceDirt(world, gravePos.down(1));
 		tryPlaceDirt(world, gravePos.down(1).offset(inventory.player.getHorizontalFacing().getOpposite(), 1));
