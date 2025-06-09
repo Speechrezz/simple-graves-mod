@@ -1,4 +1,5 @@
 {
   "block.simplegraves.gravestone": "Gravestone",
-  "item.simplegraves.gravestone": "Gravestone"
+  "item.simplegraves.gravestone": "Gravestone",
+  "text.gravestones.grave_coordinates": "Gravestone created at (x: %d, y: %d, z: %d)"
 }

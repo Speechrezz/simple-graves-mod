@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -76,7 +77,8 @@ public abstract class LivingEntityMixin extends LivingEntity {
 		gravestoneBlockEntity.markDirty();
 		world.addBlockEntity(gravestoneBlockEntity);
 
-		SimpleGraves.LOGGER.info("[SimpleGraves] Gravestone placed at ({}, {}, {})", gravePos.getX(), gravePos.getY(), gravePos.getZ());
+		inventory.player.sendMessage(Text.translatable("text.gravestones.grave_coordinates", gravePos.getX(), gravePos.getY(), gravePos.getZ()), false);
+		SimpleGraves.LOGGER.info("[SimpleGraves] Gravestone placed at ({})", gravePos.toShortString());
 		return true;
 	}
 
