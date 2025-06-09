@@ -9,7 +9,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import speechrezz.simplegraves.SimpleGraves;
 import speechrezz.simplegraves.entity.ModBlockEntities;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
@@ -60,7 +59,6 @@ public class GravestoneBlockEntity extends BlockEntity {
             nbt.putString("GraveOwnerUUID", graveOwner.getId().toString());
             nbt.putString("GraveOwnerName", graveOwner.getName());
         }
-        SimpleGraves.LOGGER.info("writeNbt: {}", nbt.toString());
 
         super.writeNbt(nbt, registryLookup);
     }
@@ -68,7 +66,6 @@ public class GravestoneBlockEntity extends BlockEntity {
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-        SimpleGraves.LOGGER.info("readNbt: {}", nbt.toString());
 
         Inventories.readNbt(nbt.getCompoundOrEmpty("Items"), this.items, registryLookup);
         xp = nbt.getInt("XP", 0);
