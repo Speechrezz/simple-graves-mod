@@ -21,6 +21,8 @@ public class GravestoneBlockEntityRenderer implements BlockEntityRenderer<Graves
             MinecraftClient client = MinecraftClient.getInstance();
             if (client.player == null) return;
 
+            GameProfile profile = entity.getGraveOwner();
+            if (profile == null) return;
             TextRenderer textRenderer = client.textRenderer;
 
             matrices.push();
@@ -35,9 +37,7 @@ public class GravestoneBlockEntityRenderer implements BlockEntityRenderer<Graves
             
             matrices.scale(-0.025f, -0.025f, 0.025f);
 
-            GameProfile profile = entity.getGraveOwner();
-
-            Text nameText = Text.literal(profile != null ? profile.getName() : "Unknown");
+            Text nameText = Text.literal(profile.getName());
             int textWidth = textRenderer.getWidth(nameText);
 
             textRenderer.draw(nameText, -textWidth / 2.0f, 0, 0xFFFFFF, false, 
