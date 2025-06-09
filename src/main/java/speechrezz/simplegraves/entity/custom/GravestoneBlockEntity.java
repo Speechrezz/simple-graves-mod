@@ -11,8 +11,13 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import speechrezz.simplegraves.SimpleGraves;
 import speechrezz.simplegraves.entity.ModBlockEntities;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 
 import java.util.UUID;
+
+import org.jetbrains.annotations.Nullable;
 
 public class GravestoneBlockEntity extends BlockEntity {
     private DefaultedList<ItemStack> items = DefaultedList.ofSize(50, ItemStack.EMPTY);
@@ -73,5 +78,16 @@ public class GravestoneBlockEntity extends BlockEntity {
             String name = nbt.getString("GraveOwnerName", "");
             graveOwner = new GameProfile(id, name);
         }
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
+    }
+    
+    @Override
+    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
+        return createNbt(registryLookup);
     }
 }

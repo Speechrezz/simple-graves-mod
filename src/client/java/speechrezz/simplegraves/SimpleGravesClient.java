@@ -1,10 +1,13 @@
 package speechrezz.simplegraves;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import speechrezz.simplegraves.entity.ModBlockEntities;
+import speechrezz.simplegraves.renderer.GravestoneBlockEntityRenderer;
 
 public class SimpleGravesClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
-		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
+		BlockEntityRendererRegistry.register(ModBlockEntities.COUNTER_BLOCK_ENTITY, (context) -> new GravestoneBlockEntityRenderer());
 	}
 }
