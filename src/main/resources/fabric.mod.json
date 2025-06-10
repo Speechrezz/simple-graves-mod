@@ -3,13 +3,13 @@
 	"id": "simplegraves",
 	"version": "${version}",
 	"name": "SimpleGraves",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Spawns gravestone upon death with all your items and XP. Break to retrieve.",
 	"authors": [
-		"Me!"
+		"Speechrezz",
+		"Borknbeans"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Speechrezz/simple-graves-mod"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/simplegraves/icon.png",
