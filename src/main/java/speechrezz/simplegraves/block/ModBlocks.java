@@ -21,7 +21,7 @@ public class ModBlocks {
     public static final Block GRAVESTONE = register(
             "gravestone",
             GravestoneBlock::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE),
+            AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).strength(0.1f, 1200.0f),
             true
     );
 
