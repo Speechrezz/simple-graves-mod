@@ -1,5 +1,6 @@
 {
   "block.simplegraves.gravestone": "Gravestone",
   "item.simplegraves.gravestone": "Gravestone",
+  "gamerule.preventGraveRobbing": "Prevent players from breaking other player's graves",
   "text.gravestones.grave_coordinates": "Gravestone created at (x: %d, y: %d, z: %d)"
 }

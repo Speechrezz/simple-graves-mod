@@ -2,6 +2,8 @@ package speechrezz.simplegraves;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -12,6 +14,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +27,9 @@ import java.util.Optional;
 public class SimpleGraves implements ModInitializer {
 	public static final String MOD_ID = "simplegraves";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+	public static final GameRules.Key<GameRules.BooleanRule> PREVENT_GRAVE_ROBBING =
+			GameRuleRegistry.register("preventGraveRobbing", GameRules.Category.PLAYER, GameRuleFactory.createBooleanRule(false));
 
 	@Override
 	public void onInitialize() {

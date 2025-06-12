@@ -5,7 +5,9 @@
 	"name": "SimpleGraves",
 	"description": "Spawns gravestone upon death with all your items and XP. Break to retrieve.",
 	"authors": [
-		"Speechrezz",
+		"Speechrezz"
+	],
+	"contributors": [
 		"Borknbeans"
 	],
 	"contact": {
